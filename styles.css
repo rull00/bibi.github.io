@@ -80,6 +80,7 @@ body {
 }
 
 .toggle {
+  display: none; /* 이거 추가 */
   margin-top: 14px;
   padding: 10px 16px;
   border: 0;
@@ -103,4 +104,5 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .cover, .card { transition: none !important; }
 }
+
 
