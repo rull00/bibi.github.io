@@ -99,13 +99,14 @@ body {
 .toggle,
 .hint {
   position: relative;
-  z-index: 5; /* 카드보다 아래에 깔림 */
+  z-index: 15; /* 카드보다 아래에 깔림 */
   margin-top: 14px;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .cover, .card { transition: none !important; }
 }
+
 
 
 
