@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>청첩장</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1 class="title">우리의 결혼식에 초대합니다.</h1>
+
+<div class="card" id="card" aria-expanded="false">
+  <!-- 카드 안쪽 바닥 -->
+  <img src="비비/3x/대지 3 사본 3@3x.png" alt="청첩장 안쪽" class="inside" />
+
+  <!-- 덮개 (앞/뒤 모두 포함) -->
+  <div class="cover">
+    <div class="front">
+      <img src="비비/3x/대지 3@3x.png" alt="청첩장 겉표지" />
+    </div>
+    <div class="back">
+      <img src="비비/3x/대지 3 사본 2@3x.png" alt="청첩장 덮개 뒷면" />
+    </div>
+  </div>
+</div>
+
+
+    <button class="toggle" id="toggleBtn" aria-controls="card" aria-expanded="false">
+      열어보기
+    </button>
+    <p class="hint">카드를 클릭해도 열고 닫을 수 있어요.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

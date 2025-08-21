@@ -1,0 +1,106 @@
+* { box-sizing: border-box; }
+@font-face {
+    font-family: 'Danjo-bold-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Danjo-bold-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: 'Danjo-bold-Regular', sans-serif;  /* 여기서 네가 정한 이름을 사용 */
+  color: #ffffff;
+  background:
+    radial-gradient(40rem 40rem at 20% -10%, #d4b539, transparent 60%),
+    radial-gradient(50rem 50rem at 120% 0%, #a3932c, transparent 55%),
+    #e9ded2;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+}
+
+.wrap {
+  text-align: center;
+  padding: 24px;
+  position: relative; /* 카드와 버튼/글자를 겹치게 하기 위해 */
+}
+.title { font-size: clamp(1.2rem, 1.5vw + 1rem, 2rem); margin: 0 0 18px; }
+
+.card {
+  position: relative;
+  width: min(88vw, 640px);
+  aspect-ratio: 3 / 2;
+  perspective: 2000px;
+  margin-inline: auto;
+  cursor: pointer;
+  transition: transform 900ms cubic-bezier(.2,.7,.2,1);
+  z-index: 10; /* 카드가 버튼/글자 위로 올라오도록 */
+}
+
+/* 카드 내부 이미지 */
+.inside, .cover > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.inside { box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
+
+/* 덮개 */
+.cover {
+  position: absolute;
+  inset: 0;
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition: transform 900ms cubic-bezier(.2,.7,.2,1);
+}
+
+.cover .front, .cover .back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+.cover img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 앞면/뒷면 */
+.cover .front { transform: rotateX(0deg); }
+.cover .back { transform: rotateX(-180deg) translateZ(1px); }
+
+/* 닫힌 상태 */
+.card:not(.open) .cover { transform: rotateX(0deg) translateZ(1px); }
+
+/* 열린 상태: 중심으로 관찰자 이동 + 약간 스케일 조정 */
+.card.open {
+  perspective-origin: center center;
+  transform: translateY(0) scale(0.95);
+}
+.card.open .cover { transform: rotateX(170deg) translateZ(1px); }
+
+.cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+  pointer-events: none;
+}
+
+.toggle {
+  margin-top: 14px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #f5ba30;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: .2px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+  cursor: pointer;
+}
+.toggle:active { transform: translateY(1px); }
+.hint { margin: 8px 0 0; font-size: .9rem; opacity: .7; }
+.toggle,
+.hint {
+  position: relative;
+  z-index: 5; /* 카드보다 아래에 깔림 */
+  margin-top: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover, .card { transition: none !important; }
+}
+
